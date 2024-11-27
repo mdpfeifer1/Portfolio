@@ -1,199 +1,141 @@
-/* establishes a variable of repeating declared properties  */
+/* Root Variables */
 :root {
     --dark: black;
     --light: lightblue;
 }
 
-/* targets the html to allow for a smoother user experience */
-html {
-    scroll-snap-type: smooth;
-    min-height: 100%; 
-  }
-
-/* universal */
+/* Global Reset */
 * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
 
 body {
     background-color: var(--dark);
-}
-
-/* header is parent to h1 which allows the flex property to be inherited by child */
-header {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: center;
-    text-align: center;
-    background-color: var(--dark);   
-}
-
-/* I gave this a small transition to give a little zaz */
-h1 {
-    background-color: var(--dark);
-    color: var(--light); 
-    margin-left: 50px;
-    margin-top: 40px;
-    font-size: 50px;
-    padding: 10px 10px 10px 80px;
-    border-radius: 5%;
-    transition: 2s; 
-}
-
-/* Targets everything outside the header */
-
-/* h2 = Portfolio */
-h2 {
-    position: absolute;
     color: var(--light);
-    display: flex;
-    right: 50px;
-    top: 300px;
-    font-size: 40px;
-    padding: 10px;
-    border-radius: 10%;
+}
+
+/* Header Styling */
+header {
+    text-align: center;
+    background-color: var(--dark);
+    padding: 20px 0;
+}
+
+header h1 {
+    font-size: 50px;
+    margin-bottom: 10px;
+}
+
+header h2 {
+    font-size: 30px;
     text-decoration: underline;
 }
 
-
-/*background banner*/
-hero img {
+/* Hero Section */
+.hero img {
     width: 100%;
     height: 250px;
- 
+    object-fit: cover;
 }
 
-/* Nav-bar properties */
+/* Navigation */
 nav {
     display: flex;
-    justify-content: flex-end;
-    position:absolute;
-    top: 65px;
-    right: 40px;
-    z-index: 1;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px 0;
 }
 
+nav button {
+    background-color: var(--dark);
+    border: 1px solid var(--light);
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
 
 nav button a {
+    text-decoration: none;
     color: var(--light);
-    padding: 10px 15px;
-    text-align: center; 
+    font-size: 18px;
+}
+
+/* About Me Section */
+#about-me p {
     font-size: 20px;
-    text-decoration: underline;
-    border-radius: 10%;    
-}
-
-nav button a::after:hover {
-    cursor: pointer;
-   }
-
-/* this selects all the images below the large image */
-article .imgs {
-    flex-basis: 24%;
-    height: 200px;
-    justify-content: space-between;
-    border: 10px;  
-    border-color: var(--light); 
-    border: 5px solid var(--light);
-}
-
-/* targets the large image */
-article .img-1 {
-    flex-basis: 100%;
-    height: 500px;
-    margin: 30px;
-    justify-content: center;
-   border: 5px solid var(--light);
-}
-
-/* about me paragraph */
- #about-me p {
-    font-size: 25px;
-    padding: 30px 30px 30px 30px;
-    flex-basis: 80%;
-    color: var(--light);  
-    font-style: italic;
-    margin-right: 20px;
-} 
-
-/* targets the headers for each section */
-#about-me, 
-#work,
- #contact h3 {  
-    padding: 30px 0px;
+    line-height: 1.6;
     text-align: center;
-    margin-left: 170px;
-    font-size: 50px;
-     display: flex; 
-    color: var(--light);
-
-  
-   
-} 
-
-/* Universal Button */
-button {
-    background-color: var(--dark);
-    border: 0;
-} 
-
-
-/* Targets Contacts Class */
-.contacts {
-    color: var(--light);
-    text-align: center; 
-    font-size: 20px;
-    text-decoration: underline;
-    display: inline-block;
-    padding: 10px; 
-    margin: 30px 30px 30px 70px;
+    padding: 20px;
 }
 
-/* Allows contacts class to have psuedo elements */
-.contacts::after:hover {
-    cursor: pointer;
+/* Work Section */
+#work {
+    padding: 20px;
+    text-align: center;
 }
 
-/* Targets specifically work header */
-#work h3{
-    margin-left: 25px;
-  
-}
-
-/* Univeral */
-a {
-    color: var(--light);
-}
-
-/* Targets section id contact  */
-#contact {
+.work-gallery {
     display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 20px;
 }
 
+.work-gallery a {
+    flex: 1 1 calc(20% - 20px);
+    max-width: 45%;
+    max-height: 100%;    
+    text-decoration: none;
+    border: 2px solid var(--light);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
 
-/* Media Queries :( */
-@media screen and (max-width: 768px) {
-  
-    /* Attempted to manipulate for responsiveness */
- nav {   
-      flex-direction: column;
-      max-width: 100%; 
-      padding: 30px;
-    }
+.work-gallery a:hover {
+    transform: scale(1.05);
+}
 
-    hero image {
-        max-width: 100%;
-    }
-    
-
-
-h1 {
+.work-gallery img {
     width: 100%;
-   }
+    height: auto;
+    display: block;
+}
 
- nav {
-     position: relative;  
-  }
+h3 {
+    text-align: center;
+}
 
+/* Contact Section */
+#contact ul {
+    list-style-type: none;
+    text-align: center;
+    padding: 20px;
+}
+
+#contact ul li {
+    margin: 10px 0;
+}
+
+#contact ul li a {
+    color: var(--light);
+    text-decoration: underline;
+    font-size: 18px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .work-gallery a {
+        flex: 1 1 100%;
+        /* Single column on small screens */
+    }
+
+    nav {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
 }
